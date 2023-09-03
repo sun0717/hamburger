@@ -5,24 +5,16 @@ import classes from './style.module.css';
  * 食物列表组件
  * @returns 
  */
-const Meals = () => {
+const Meals = (props) => {
     return (
         <>
             {/* 现在将滚动条设置给了Meals */}
             <div className={classes.Meals}>
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
+                {props.mealsData.map(item => 
+                    <Meal 
+                        key={item.id}
+                        meal={item}
+                    /> )}
             </div>
         </>
     )

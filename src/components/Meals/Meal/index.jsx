@@ -5,21 +5,21 @@ import Counter from '../../UI/Counter/index.jsx';
  * 食物列表组件
  * @returns
  */
-const Meal = () => {
+const Meal = (props) => {
   return (
     <div className={classes.Meal}>
       <div className={classes.ImgBox}>
-        <img src="/img/meals/1.png" alt="" />
+        <img src={props.meal.img} alt="" />
       </div>
       <div className={classes.TextBox}>
         <div className={classes.DescBox}>
-          <h2 className={classes.Title}>汉堡包</h2>
+          <h2 className={classes.Title}>{props.meal.title}</h2>
           <p className={classes.Desc}>
-            百分百纯牛肉搭配爽脆酸瓜洋葱粒与美味番茄酱经典滋味
+          {props.meal.desc}
           </p>
         </div>
         <div className={classes.PriceWrap}>
-          <span className={classes.Price}>12</span>
+          <span className={classes.Price}>{props.meal.price}</span>
           <Counter amount={0}/>
         </div>
       </div>
