@@ -20,7 +20,11 @@ const Meal = (props) => {
         </div>
         <div className={classes.PriceWrap}>
           <span className={classes.Price}>{props.meal.price}</span>
-          <Counter amount={0}/>
+          <Counter 
+            meal={props.meal}
+            onAdd={props.onAdd}
+            onSub={props.onSub}
+            />
         </div>
       </div>
     </div>

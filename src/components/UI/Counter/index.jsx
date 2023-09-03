@@ -1,19 +1,27 @@
 import React from "react";
 import classes from "./style.module.css";
 
-
 const Counter = (props) => {
+  // 添加购物车的函数
+  const addButtonHandler = () => {
+    props.onAdd(props.meal);
+  };
+  // 减少的函数
+  const subButtonHandler = () => {
+    props.onSub(props.meal);
+  };
   return (
     <div className={classes.Counter}>
-      {
-        (props.amount && props.amount !== 0) ? 
-        (<button className={classes.Sub}>
-          <span>-</span>
-        </button>) : null
-      }
+      {props.meal.amount && props.meal.amount !== 0 ? (
+        <>
+          <button className={classes.Sub} onClick={subButtonHandler}>
+            <span>-</span>
+          </button>
+          <span className={classes.Count}>{props.meal.amount}</span>
+        </>
+      ) : null}
 
-      <span className={classes.Count}>{props.amount}</span>
-      <button className={classes.Add}>
+      <button onClick={addButtonHandler} className={classes.Add}>
         <span>+</span>
       </button>
     </div>
