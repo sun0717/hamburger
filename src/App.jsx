@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Meals from "./components/Meals";
-import TestContext from "./components/store/testContext";
-import A from "./components/Meals/Meal/A";
-import B from "./components/Meals/Meal/B";
+import CartContext from "./components/store/cart-context";
 
 // 模拟一组食物数据
 const MEALS_DATA = [
@@ -72,7 +70,7 @@ function App() {
   });
 
   // 向购物车中添加商品
-  const addMealHandler = (meal) => {
+  const addItem = (meal) => {
     // meal 要添加进购物车的商品
     // 对购物车进行复制
     const newCart = { ...cartData };
@@ -98,7 +96,7 @@ function App() {
   };
 
   // 减少商品的数量
-  const subMealHandler = (meal) => {
+  const removeItem = (meal) => {
     // 复制购物车
     const newCart = { ...cartData };
 
@@ -114,18 +112,12 @@ function App() {
     setCartData(newCart);
   };
   // Provider 可以嵌套，当我们通过 Context 访问数据时，他会读取离他最近的 Provider 中的数据
+  // <TestContext.Provider value={{name: '猪八戒', age: 28}}>
   return (
     <div style={{ width: "750rem", height: 200 }}>
-      
-      <TestContext.Provider value={{name: '猪八戒', age: 28}}>
-        <A />
-        <B />
-        <Meals
-          mealsData={mealsData}
-          onAdd={addMealHandler}
-          onSub={subMealHandler}
-        />
-      </TestContext.Provider>
+      <CartContext.Provider value={{...cartData, addItem, removeItem}}>
+        <Meals mealsData={mealsData} />
+      </CartContext.Provider>
     </div>
   );
 }

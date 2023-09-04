@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import classes from "./style.module.css";
+import CartContext from "../../store/cart-context";
 
 const Counter = (props) => {
+
+  // 获取cartContext
+  const ctx = useContext(CartContext);
   // 添加购物车的函数
   const addButtonHandler = () => {
-    props.onAdd(props.meal);
+    // props.onAdd(props.meal);
+    ctx.addItem(props.meal);
   };
   // 减少的函数
   const subButtonHandler = () => {
-    props.onSub(props.meal);
+    // props.onSub(props.meal);
+    ctx.removeItem(props.meal);
   };
   return (
     <div className={classes.Counter}>

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import TestContext from '../../store/testContext'
+// import TestContext from '../../store/testContext'
 
 /**
  * 使用Context 方式二：
@@ -19,9 +19,9 @@ const B = () => {
     //    <TestContext.Provider value={{name:'小玲', age:17}}>
         
     //    </TestContext.Provider> 
-        <div>
-            {ctx.name} -- {ctx.age}
-        </div>
+        // <div>
+        //     {ctx.name} -- {ctx.age}
+        // </div>
     )
 }
 export default B;
