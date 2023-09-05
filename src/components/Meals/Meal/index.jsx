@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./style.module.css";
-import Counter from '../../UI/Counter/index.jsx';
+import Counter from "../../UI/Counter/index.jsx";
 /**
  * 食物列表组件
  * @returns
@@ -14,15 +14,11 @@ const Meal = (props) => {
       <div className={classes.TextBox}>
         <div className={classes.DescBox}>
           <h2 className={classes.Title}>{props.meal.title}</h2>
-          <p className={classes.Desc}>
-          {props.meal.desc}
-          </p>
+          {props.noDesc ? null : <p className={classes.Desc}>{props.meal.desc}</p>}
         </div>
         <div className={classes.PriceWrap}>
           <span className={classes.Price}>{props.meal.price}</span>
-          <Counter 
-            meal={props.meal}
-            />
+          <Counter meal={props.meal} />
         </div>
       </div>
     </div>

@@ -122,7 +122,6 @@ function App() {
   };
   // Provider 可以嵌套，当我们通过 Context 访问数据时，他会读取离他最近的 Provider 中的数据
   // <TestContext.Provider value={{name: '猪八戒', age: 28}}>
-  // <Backdrop />
   return (
     <div style={{ width: "750rem", height: 200 }}>
       <CartContext.Provider value={{...cartData, addItem, removeItem}}>
