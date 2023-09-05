@@ -57,6 +57,7 @@ const MEALS_DATA = [
 function App() {
   // 创建一个state用来存储食物列表
   const [mealsData, setMealsData] = useState(MEALS_DATA);
+  
   // 创建一个state, 用来存储购物车的数据
   /**
    * 1. 商品 [] items
@@ -68,6 +69,12 @@ function App() {
     totalAmount: 0,
     totalPrice: 0,
   });
+
+  // 创建一个过滤meals的函数
+  const filterHandler = (keyword) => {
+    const newMealsData = MEALS_DATA.filter(item => item.title.indexOf(keyword) !== -1);
+    setMealsData(newMealsData);
+  };
 
   // 向购物车中添加商品
   const addItem = (meal) => {
@@ -116,7 +123,7 @@ function App() {
   return (
     <div style={{ width: "750rem", height: 200 }}>
       <CartContext.Provider value={{...cartData, addItem, removeItem}}>
-        <FilterMeals />
+        <FilterMeals onFilter={filterHandler}/>
         <Meals mealsData={mealsData} />
       </CartContext.Provider>
     </div>

@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./style.module.css";
 // rafc
-const FilterMeals = () => {
+const FilterMeals = (props) => {
+  const [keyword, setKeyword] = useState('');
+  
+  const inputChangeHandler = e => {
+    // setKeyword(e.target.value);
+    const keyword = e.target.value.trim()
+    props.onFilter(keyword);
+  };
+
   return (
     <div className={classes.FilterMeals}>
       <div className={classes.InputOut}>
@@ -25,6 +33,7 @@ const FilterMeals = () => {
           type="text"
           placeholder={"请输入关键字"}
           className={classes.SearchInput}
+          onChange={inputChangeHandler}
         />
       </div>
     </div>
