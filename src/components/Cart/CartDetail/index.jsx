@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Backdrop from "../../UI/Backdrop";
 import classes from "./style.module.css";
 import CartContext from "../../store/cart-context";
@@ -7,7 +7,10 @@ const CartDetail = () => {
   const ctx = useContext(CartContext);
   return (
     <Backdrop>
-      <div className={classes.CartDetail}>
+      {showConfirm && <Confirm 
+        />}
+      <div className={classes.CartDetail}
+        onClick={e => e.stopPropagation()}>
         <header className={classes.Header}>
           <h2 className={classes.Title}>餐品详情</h2>
           <div className={classes.Clear}>
@@ -31,7 +34,7 @@ const CartDetail = () => {
         </header>
 
         <div className={classes.MealList}>
-          {ctx.items.map(item => (
+          {ctx.items.map((item) => (
             <Meal key={item.id} meal={item} noDesc></Meal>
           ))}
         </div>
